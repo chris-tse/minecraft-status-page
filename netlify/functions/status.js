@@ -1,4 +1,4 @@
-exports.handler = async function (event, context) {
+exports.handler = function (event, context) {
     const NetcatClient = require('netcat/client')
     const nc = new NetcatClient()
     const SERVER = 'chrisminecraft.duckdns.org'
