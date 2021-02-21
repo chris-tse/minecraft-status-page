@@ -1,5 +1,6 @@
+const util = require('minecraft-server-util')
+
 exports.handler = async function (event, context) {
-    const util = require('minecraft-server-util')
     const SERVER = 'chrisminecraft.duckdns.org'
     const headers = {
         'Access-Control-Allow-Origin': '*',
