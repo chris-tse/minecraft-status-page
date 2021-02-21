@@ -1,13 +1,18 @@
-exports.handler = function (event, context) {
-    const NetcatClient = require('netcat/client')
-    const nc = new NetcatClient()
+exports.handler = async function (event, context) {
+    const util = require('minecraft-server-util')
     const SERVER = 'chrisminecraft.duckdns.org'
-    const PORT_RANGE = '25565-25565'
 
-    nc.addr(SERVER).scan(PORT_RANGE, ports => {
+    try {
+        const response = await util.status(SERVER)
+
         return {
             statusCode: 200,
-            body: JSON.stringify(ports),
+            body: JSON.stringify({ error: false, serverInfo: response }),
         }
-    })
+    } catch (e) {
+        return {
+            statusCode: 200,
+            body: JSON.stringify({ error: true, message: e.message }),
+        }
+    }
 }
