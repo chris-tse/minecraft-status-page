@@ -20,7 +20,7 @@ exports.handler = async function (event, context) {
         return {
             statusCode: 200,
             headers,
-            body: JSON.stringify({ error: true, message: e.message }),
+            body: JSON.stringify({ error: true, message: e?.message || 'No response from server' }),
         };
     }
 };
